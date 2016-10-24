@@ -1,0 +1,36 @@
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "TruckinIt", root_path, class: "navbar-brand" %>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Food by Type <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">American</a></li>
+            <li><a href="#">Chinese</a></li>
+            <li><a href="#">Greek</a></li>
+            <li><a href="#">Italian</a></li>
+            <li><a href="#">Japanese</a></li>
+            <li><a href="#">Mexican</a></li>
+            <li><a href="#">Vegan</a></li>
+            <li><a href="#">Everything Else</a></li>
+          </ul>
+        </li>
+            
+            <li><%= link_to 'Find Near Me', "#" %></li>
+            <li><%= link_to 'Have a Food Truck - Get Found', "#" %></li>
+            <li><%= link_to 'Sign up', "#" %></li>
+            <li><%= link_to 'Log in', "#" %></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
