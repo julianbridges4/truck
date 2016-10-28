@@ -10,6 +10,8 @@ gem 'jbuilder',     '2.4.1'
 gem 'geocoder'
 gem 'figaro'
 gem 'pundit', '~> 1.1'
+gem 'devise'
+gem 'paperclip'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'
