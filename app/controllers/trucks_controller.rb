@@ -1,5 +1,5 @@
 class TrucksController < ApplicationController
-  before_action :set_truck, only: [:show, :edit, :update, :destroy]
+  before_action :set_truck, only: [:show, :edit, :update, :destroy, :checkin]
   before_filter :authenticate_user!, :except => [:show, :index, :home, :nearme]
 
   def index
@@ -32,6 +32,10 @@ class TrucksController < ApplicationController
   def edit
   end
 
+  def checkin
+  end
+
+
   def update
     respond_to do |format|
       if @truck.update(truck_params)
@@ -52,15 +56,7 @@ class TrucksController < ApplicationController
   def profile
   end
   
-  def checkin
-    respond_to do |format|
-      if @truck.update(truck_params)
-        format.html { redirect_to @truck, notice: 'Truck was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
-    end
-  end
+
   
   def home
   end

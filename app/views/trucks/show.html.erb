@@ -53,10 +53,10 @@
     </div>
     <div class="btn-toolbar">
       <%= link_to 'Back', trucks_path, class: "btn btn-default" %> 
-      <% if current_user %>
+      <% if current_user.id == @truck.user_id %>
         <%= link_to 'Edit', edit_truck_path(@truck), class: "btn btn-default" %> 
         <%= link_to 'Delete', @truck, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> 
-        <%= link_to 'Check In', @truck, class: "btn btn-success" %>
+        <%= link_to 'Check In', checkin_path(@truck), class: "btn btn-success" %>
       <% end %>
     </div>
   </div>

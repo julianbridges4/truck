@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   root 'trucks#home'
-  get 'signup' => 'users#new'
   get 'nearme' => 'trucks#nearme'
-  get 'profile' => 'trucks#profile'
-  get 'checkin' => 'trucks#checkin'
+  get 'profile/:id' => 'trucks#profile'
+  get 'checkin/:id' => 'trucks#checkin', as: :checkin
   resources :trucks
 end
