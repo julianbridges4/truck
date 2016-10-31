@@ -8,6 +8,7 @@ one:
   business_address: MyString
   email: MyString
   current_location: MyString
+  user: one
 
 two:
   business_name: MyString
@@ -17,3 +18,4 @@ two:
   business_address: MyString
   email: MyString
   current_location: MyString
+  user: two

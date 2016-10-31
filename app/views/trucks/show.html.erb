@@ -1,0 +1,63 @@
+<br>
+<div class="container">
+  <div class="jumbotron">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2><%= @truck.business_name %></h2>
+      </div>
+      <div class="panel-body">
+
+        <% if @truck.avatar.exists? %>
+          <%= image_tag @truck.avatar.url(:thumb), class: "image-responsive" %>
+        <% end %>
+
+        <p>
+          <strong>Food Type:</strong>
+          <%= @truck.food_type %>
+        </p>
+
+        <p>
+          <strong>Website:</strong>
+          <%= @truck.website %>
+        </p>
+        <p>
+          <strong>Phone:</strong>
+          <%= @truck.phone %>
+        </p>
+        <p>
+          <strong>Owner:</strong>
+          <%= @truck.owner_name %>
+        </p>
+        <p>
+          <strong>Address:</strong>
+          <%= @truck.business_address %>
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <%= @truck.email %>
+        </p>
+        <p>
+          <strong>Current Location:</strong>
+          <%= @truck.location %>
+        </p>
+        
+        <p>
+          <strong>Latitude</strong>
+          <%= @truck.latitude %>
+        </p>
+        <p>
+          <strong>Longitude</strong>
+          <%= @truck.longitude %>
+        </p>
+      </div>
+    </div>
+    <div class="btn-toolbar">
+      <%= link_to 'Back', trucks_path, class: "btn btn-default" %> 
+      <% if current_user %>
+        <%= link_to 'Edit', edit_truck_path(@truck), class: "btn btn-default" %> 
+        <%= link_to 'Delete', @truck, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> 
+        <%= link_to 'Check In', @truck, class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

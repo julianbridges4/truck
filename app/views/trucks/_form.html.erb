@@ -1,0 +1,60 @@
+<%= form_for(@truck) do |f| %>
+  <% if @truck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@truck.errors.count, "error") %> prohibited this truck from being saved:</h2>
+      <ul>
+        <% @truck.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :business_name %>
+    <%= f.text_field :business_name, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :food_type %>
+    <%= f.select :food_type, ['American', 'Barbecue', 'Chinese', 'French', 'Greek', 'Hamburger', 'Hot Dog', 'Indian', 'Italian', 'Japanese', 'Mexican', 'Pizza', 'Sandwich', 'Seafood', 'Steak', 'Sushi', 'Thai', 'Vegan', 'Other'] %>
+  </div>
+  
+  <br>
+  <div class="form-group">
+    <%= f.label :website %>
+    <%= f.text_field :website, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :owner_name %>
+    <%= f.text_field :owner_name, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :business_address %>
+    <%= f.text_field :business_address, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
+  <br>
+  <div class="field form-group">
+    <%= f.label "Truck Photo" %><br>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="cant-see-me">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>  
+  
+  <div class="actions form-group" align="center">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+
+<% end %>

@@ -1,0 +1,89 @@
+<br>
+<div class="container">
+  <div class="jumbotron">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Your Truck Profile</h3>
+      </div>
+      <div class="panel-body">
+
+<%= form_for(@truck) do |f| %>
+  <% if @truck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@truck.errors.count, "error") %> prohibited this truck from being saved:</h2>
+      <ul>
+        <% @truck.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div id="divSample">
+  <%= f.text_field :location, id: "Position1" %><br>
+  <%= f.text_field :latitude, id: "Latitude" %><br>
+  <%= f.text_field :longitude, id: "Longitude" %><br>
+  <%= f.button :submit, class: "btn" %>
+</div>
+
+
+
+      </div>
+    </div>
+    <%= link_to 'Show', @truck %> |
+    <%= link_to 'Back', truck_path %>
+  </div>
+</div>
+
+
+<%= javascript_tag do %>
+  getLocation();
+<% end %>
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function getLocationConstant() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+        } else {
+            alert("Your browser or device doesn't support Geolocation");
+        }
+    }
+
+    // If we have a successful location update
+    function onGeoSuccess(event) {
+        document.getElementById("Latitude").value = event.coords.latitude;
+        document.getElementById("Longitude").value = event.coords.longitude;
+        document.getElementById("Position1").value = event.coords.latitude + ", " + event.coords.longitude;
+
+    }
+
+    // If something has gone wrong with the geolocation request
+    function onGeoError(event) {
+        alert("Error code " + event.code + ". " + event.message);
+    }
+</script>
+<!--<form>-->
+<!--    <div id="divSample" class="hideClass">Latitude:-->
+<!--        <input type="text" id="Latitude" name="Latitude" value="">-->
+<!--        <br>-->
+<!--        <br>Longitude:-->
+<!--        <input type="text" id="Longitude" name="Longitude" value="">-->
+<!--        <br>-->
+<!--    </div>-->
+<!--    <br>Position-->
+<!--    <input type="text" id="Position1" name="Position1" value="Miami">-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <input type="button" value="Get Location" onclick="getLocationConstant()" />-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <input type="submit" value="Add GPS Location" class=small>-->
+<!--</form>-->
+
+<% end %>

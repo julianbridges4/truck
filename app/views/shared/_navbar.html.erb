@@ -7,29 +7,38 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to "TruckinIt", root_path, class: "navbar-brand" %>
+          <%= link_to "Food Truck Finder", root_path, class: "navbar-brand" %>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            
-            <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Food by Type <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">American</a></li>
-            <li><a href="#">Chinese</a></li>
-            <li><a href="#">Greek</a></li>
-            <li><a href="#">Italian</a></li>
-            <li><a href="#">Japanese</a></li>
-            <li><a href="#">Mexican</a></li>
-            <li><a href="#">Vegan</a></li>
-            <li><a href="#">Everything Else</a></li>
-          </ul>
-        </li>
-            
-            <li><%= link_to 'Find Near Me', "#" %></li>
-            <li><%= link_to 'Have a Food Truck - Get Found', "#" %></li>
-            <li><%= link_to 'Sign up', "#" %></li>
-            <li><%= link_to 'Log in', "#" %></li>
+            <% if !user_signed_in? %>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Food by Type <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><%= link_to "All", trucks_path %></li>
+                  <% @type.each do |t| %>
+                    <li><%= link_to "#{t.food_type}", trucks_path(food_type: t.food_type) %></li>
+                  <% end %>
+                  
+                </ul>
+              </li>
+              <li><%= link_to 'Find Near Me', "nearme" %></li>
+              <li><%= link_to 'Have a Food Truck - Get Found', new_user_registration_path, method: :get %></li>
+              <li><%= link_to 'Log in', new_user_session_path, method: :get %></li>
+            <% end %>
+            <% if current_user %>
+              <% if Truck.where(:user_id => current_user.id).blank? %>
+                <li><%= link_to 'Create Truck Profile', new_truck_path, method: :get %></li>
+              <% end %>
+              <% if Truck.where(:user_id => current_user.id).present? %>
+                <li><%= link_to 'Check In', "#" %></li>
+                <li><%= link_to 'Check Out', "#" %></li>
+                <li><%= link_to 'Edit Truck Profile', "#" %></li>
+              <% end %>
+              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

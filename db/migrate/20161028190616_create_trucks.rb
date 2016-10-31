@@ -8,6 +8,7 @@ class CreateTrucks < ActiveRecord::Migration[5.0]
       t.string :business_address, limit: 150
       t.string :email, limit: 60
       t.string :current_location
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

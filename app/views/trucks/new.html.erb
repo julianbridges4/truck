@@ -1,29 +1,16 @@
-<h1>Build Your Food Truck</h1>
+<br>
 
-<%= form_for(@truck) do |t| %>
-<% if @truck.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@truck.errors.count, "error") %> prohibited this truck from being saved:</h2>
-
-      <ul>
-        <% @truck.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="container">
+  <div class="jumbotron">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Build Your Truck Profile</h3>
+      </div>
+      <div class="panel-body">
+        <%= render 'form', truck: @truck %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :message %><br>
-    <%= f.text_field :message %>
+    <%= link_to 'Back', trucks_path %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id, value: current_user.id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<%= link_to 'Back', trucks_path %>
+</div>

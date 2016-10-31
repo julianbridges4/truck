@@ -1,0 +1,35 @@
+<br>
+<div class="container" class="col-sm-4">
+  <div class="jumbotron">
+    
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">Listing Food Trucks</h2>
+          </div>
+            <div class="panel-body">
+
+            <p id="notice"><%= notice %></p>
+
+            <% @trucks.each do |t| %>
+              <h2><%= t.business_name %></h2>
+              <h3><%= t.food_type %></h3>
+              <p><%= t.current_location %></p>
+              <p><%= t.user.username %></p>
+                
+              <% if t.avatar.exists? %>
+                <%= image_tag t.avatar.url(:thumb), class: "image-responsive" %>
+              <% end %>
+        
+              <div class="btn-group">
+                <%= link_to 'Show', t, class: "btn btn-default" %>
+
+              </div>
+              <hr>
+            <% end %>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

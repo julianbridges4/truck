@@ -1,0 +1,22 @@
+
+
+        <p id="notice"><%= notice %></p>
+
+
+
+              <h2><%= current_user.business_name %></h2>
+              <h3><%= current_user.food_type %></h3>
+              <p><%= current_user.current_location %></p>
+              <p><%= current_user.user.username %></p>
+                
+              <% if current_user.avatar.exists? %>
+                <%= image_tag current_user.avatar.url(:thumb), class: "image-responsive" %>
+              <% end %>
+              <div class="btn-group">
+                <%= link_to 'Show', t, class: "btn btn-default" %>
+                <% if current_user %>
+                  <%= link_to 'Edit', edit_truck_path(t), class: "btn btn-default" %>
+                  <%= link_to 'Delete', t, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+                <% end %>
+              </div>
+

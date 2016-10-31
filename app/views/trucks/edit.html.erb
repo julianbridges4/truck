@@ -1,0 +1,116 @@
+<br>
+<div class="container">
+  <div class="jumbotron">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">Check In / Check Out</h2>
+      </div>
+      <div class="panel-body">
+
+      <%= form_for(@truck) do |f| %>
+        <% if @truck.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@truck.errors.count, "error") %> prohibited this truck from being saved:</h2>
+              <ul>
+                <% @truck.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+          </div>
+        <% end %>
+
+      <form id="myForm">
+        <div class="form-group">
+          <%= f.label :location %>
+          <%= f.text_field :location, id: "Position1", class: "form-control" %><br>
+        </div>
+        <div class="form-group">
+          <%= f.label :location %>
+          <%= f.text_field :latitude, id: "Latitude", class: "form-control" %><br>
+        </div>
+        <div class="form-group">
+          <%= f.label :location %>
+          <%= f.text_field :longitude, id: "Longitude", class: "form-control" %><br>
+        </div>
+
+        <div class="actions form-group" align="center">
+          <input type="button" value="Get Location" onclick="getLocationConstant()" class="btn btn-primary">
+          <input type="button" onclick="resetFunction()" value="Clear Location" class="btn btn-danger">
+          <%= f.button :submit, id: "Add GPS Location", class: "btn btn-success" %>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <%= link_to 'Show', @truck %> |
+  <%= link_to 'Back', truck_path %>
+  </div>
+</div>
+
+
+<script>
+  function resetFunction() {
+    document.getElementById("myForm").reset();
+  }
+</script>
+
+<script type="text/javascript">
+    function getLocationConstant() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+        } else {
+            alert("Your browser or device doesn't support Geolocation");
+        }
+    }
+
+    // If we have a successful location update
+    function onGeoSuccess(event) {
+        document.getElementById("Latitude").value = event.coords.latitude;
+        document.getElementById("Longitude").value = event.coords.longitude;
+        document.getElementById("Position1").value = event.coords.latitude + ", " + event.coords.longitude;
+
+    }
+
+    // If something has gone wrong with the geolocation request
+    function onGeoError(event) {
+        alert("Error code " + event.code + ". " + event.message);
+    }
+</script>
+<!--<form>-->
+<!--    <div id="divSample" class="hideClass">Latitude:-->
+<!--        <input type="text" id="Latitude" name="Latitude" value="">-->
+<!--        <br>-->
+<!--        <br>Longitude:-->
+<!--        <input type="text" id="Longitude" name="Longitude" value="">-->
+<!--        <br>-->
+<!--    </div>-->
+<!--    <br>Position-->
+<!--    <input type="text" id="Position1" name="Position1" value="Miami">-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <input type="button" value="Get Location" onclick="getLocationConstant()" />-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <input type="submit" value="Add GPS Location" class=small>-->
+<!--</form>-->
+
+<% end %>
+
+
+
+
+<br>
+<div class="container">
+  <div class="jumbotron">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Your Truck Profile</h3>
+      </div>
+      <div class="panel-body">
+        <%= render 'form' %>
+      </div>
+    </div>
+    <%= link_to 'Show', @truck %> |
+    <%= link_to 'Back', truck_path %>
+  </div>
+</div>
