@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get 'nearme' => 'trucks#nearme'
   get 'profile/:id' => 'trucks#profile'
   get 'checkin/:id' => 'trucks#checkin', as: :checkin
+  get 'checkout/:id' => 'trucks#checkout', as: :checkout
   resources :trucks
 end

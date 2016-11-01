@@ -3,8 +3,8 @@
   <div class="modal-dialog modal-dialog-center modal-sm">
     <div class="modal-content">
       <div class="modal-header" align="center">
-        
-        <div class="modal-body" align="center">
+      </div>        
+      <div class="modal-body" align="center">
         <%= form_for(@truck) do |f| %>
           <% if @truck.errors.any? %>
             <div id="error_explanation">
@@ -17,24 +17,32 @@
             </div>
           <% end %>
           <form id="myForm">
-            <%= f.hidden_field :location, id: "Position1" %>
-            <%= f.hidden_field :latitude, id: "Latitude" %>
-            <%= f.hidden_field :longitude, id: "Longitude" %>
-            <button type="submit" class="btn btn-success btn-lg btn-block btn3d">Check In</button>
+            <div class="form-group">
+              <%= f.label :location %>
+              <%= f.text_field :location, id: "Position1", class: "form-control" %><br>
+            </div>
+            <div class="form-group">
+              <%= f.label :latitude %>
+              <%= f.text_field :latitude, id: "Latitude", class: "form-control" %><br>
+            </div>
+            <div class="form-group">
+              <%= f.label :longitude %>
+              <%= f.text_field :longitude, id: "Longitude", class: "form-control" %><br>
+            </div>
+              <button type="submit" class="btn btn-danger btn-lg btn-block btn3d">Check Out</button>
           </form>
           <% end %>
-        </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <script type="text/javascript">
 <!--
 $('#memberModal').modal('show');
 //-->
 </script>
+
 
 
 <script type="text/javascript">

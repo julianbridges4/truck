@@ -15,7 +15,6 @@
           <strong>Food Type:</strong>
           <%= @truck.food_type %>
         </p>
-
         <p>
           <strong>Website:</strong>
           <%= @truck.website %>
@@ -40,13 +39,12 @@
           <strong>Current Location:</strong>
           <%= @truck.location %>
         </p>
-        
         <p>
-          <strong>Latitude</strong>
+          <strong>Latitude:</strong>
           <%= @truck.latitude %>
         </p>
         <p>
-          <strong>Longitude</strong>
+          <strong>Longitude:</strong>
           <%= @truck.longitude %>
         </p>
       </div>
@@ -56,7 +54,6 @@
       <% if current_user.id == @truck.user_id %>
         <%= link_to 'Edit', edit_truck_path(@truck), class: "btn btn-default" %> 
         <%= link_to 'Delete', @truck, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> 
-        <%= link_to 'Check In', checkin_path(@truck), class: "btn btn-success" %>
       <% end %>
     </div>
   </div>

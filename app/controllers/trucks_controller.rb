@@ -1,5 +1,5 @@
 class TrucksController < ApplicationController
-  before_action :set_truck, only: [:show, :edit, :update, :destroy, :checkin]
+  before_action :set_truck, only: [:show, :edit, :update, :destroy, :checkin, :checkout]
   before_filter :authenticate_user!, :except => [:show, :index, :home, :nearme]
 
   def index
@@ -35,6 +35,8 @@ class TrucksController < ApplicationController
   def checkin
   end
 
+  def checkout
+  end
 
   def update
     respond_to do |format|

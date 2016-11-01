@@ -37,7 +37,7 @@
                 <li><%= link_to 'Check In', checkin_path(current_user.truck.id) %></li>
                 <% end %>
                 <% if current_user.truck.location.present? %> 
-                <li><%= link_to 'Check Out', checkin_path(current_user.truck.id) %></li>
+                <li><%= link_to 'Check Out', checkout_path(current_user.truck.id) %></li>
                 <% end %>
                 <li><%= link_to 'Edit Truck Profile', edit_truck_path(current_user.truck.id) %></li>
               <% end %>
