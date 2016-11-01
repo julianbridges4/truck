@@ -40,7 +40,13 @@ function showPosition(position) {
     }
     
     var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-    var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+    var marker = new google.maps.Marker({
+        position: latlon,
+        map: map,
+        title: "You are here!",
+        animation: google.maps.Animation.DROP
+    });
+
 }
 
 function showError(error) {
